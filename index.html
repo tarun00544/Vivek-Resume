@@ -1,0 +1,580 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivek Kumar - Professional Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #2d3436;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 50%, #6c5ce7 100%);
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+        
+        .resume-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .resume-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #74b9ff, #0984e3, #6c5ce7, #fd79a8);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 20px solid #636e72;
+        }
+        
+        .name {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+        }
+        
+        .title {
+            font-size: 22px;
+            font-weight: 300;
+            color: #74b9ff;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .contact-header {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #ddd;
+        }
+        
+        .contact-icon {
+            width: 16px;
+            height: 16px;
+            background: #74b9ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0;
+            min-height: 800px;
+        }
+        
+        .sidebar {
+            background: #f8f9fa;
+            padding: 60px 40px 40px;
+            border-right: 1px solid #e9ecef;
+        }
+        
+        .content {
+            padding: 60px 40px 40px;
+            background: white;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2d3436;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #74b9ff, #0984e3);
+            border-radius: 2px;
+        }
+        
+        .sidebar .section-title {
+            color: #636e72;
+            font-size: 16px;
+        }
+        
+        .sidebar .section-title::after {
+            width: 30px;
+            height: 2px;
+        }
+        
+        .profile-summary {
+            font-size: 15px;
+            line-height: 1.8;
+            text-align: justify;
+            color: #555;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #74b9ff;
+            position: relative;
+        }
+        
+        .skills-grid {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .skill-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-left: 4px solid #74b9ff;
+            transition: transform 0.2s ease;
+        }
+        
+        .skill-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            color: #2d3436;
+            margin-bottom: 5px;
+        }
+        
+        .skill-level {
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #74b9ff, #0984e3);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+        
+        .contact-list {
+            list-style: none;
+        }
+        
+        .contact-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+        }
+        
+        .contact-list .icon {
+            width: 20px;
+            height: 20px;
+            background: #74b9ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+            flex-shrink: 0;
+        }
+        
+        .languages-list, .hobbies-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .languages-list li, .hobbies-list li {
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #636e72;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+        }
+        
+        .experience-item, .education-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 4px solid #74b9ff;
+            position: relative;
+        }
+        
+        .experience-item::before, .education-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 30px;
+            width: 12px;
+            height: 12px;
+            background: #74b9ff;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+        
+        .job-header, .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .job-title, .degree {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2d3436;
+            margin-bottom: 5px;
+        }
+        
+        .company, .institution {
+            font-size: 16px;
+            color: #636e72;
+            font-weight: 500;
+        }
+        
+        .duration {
+            background: #0984e3;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        .job-description {
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .job-description ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .job-description li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .job-description li::marker {
+            color: #74b9ff;
+        }
+        
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .achievement-item {
+            background: linear-gradient(135deg, #74b9ff10, #0984e310);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #74b9ff30;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+        
+        .achievement-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .achievement-icon {
+            width: 40px;
+            height: 40px;
+            background: #74b9ff;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .achievement-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: #2d3436;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .name {
+                font-size: 36px;
+            }
+            
+            .title {
+                font-size: 18px;
+            }
+            
+            .contact-header {
+                gap: 20px;
+            }
+            
+            .sidebar, .content {
+                padding: 30px 20px;
+            }
+            
+            .job-header, .education-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <header class="header">
+            <h1 class="name">VIVEK KUMAR</h1>
+            <p class="title">Professional Accountant</p>
+            <div class="contact-header">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <span>+91-7668161173</span>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div class="email">vivek.kumar0834@gmail.com</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <span>Agra Dist-Agra, Uttar Pradesh</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <section class="section">
+                    <h2 class="section-title">Profile Summary</h2>
+                    <div class="profile-summary">
+                        A committed and organized Accountant with a strong background in financial reporting, legal compliance management, taxation, and budgeting. Proficient in using accounting software and MS Excel. Known for maintaining accuracy and efficiency in all operations.
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Core Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-name">Accounting & Bookkeeping</div>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">MS Excel (Advanced)</div>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Tally Prime</div>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Financial Reporting</div>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Business Communication</div>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Languages</h2>
+                    <ul class="languages-list">
+                        <li>Hindi (Native)</li>
+                        <li>English (Fluent)</li>
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Interests</h2>
+                    <ul class="hobbies-list">
+                        <li>Music</li>
+                        <li>Travelling</li>
+                        
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Personal Info</h2>
+                    <ul class="contact-list">
+                        <li>
+                            <div class="icon">🎂</div>
+                            <span>DOB: 15-08-2005</span>
+                        </li>
+                    </ul>
+                </section>
+            </aside>
+
+            <main class="content">
+                <section class="section">
+                    <h2 class="section-title">Professional Objective</h2>
+                    <div class="profile-summary">
+                        To obtain a responsible accounting position where I can apply my 2 years of hands-on experience and CA Centre bookkeeping knowledge to help a company grow and prosper. Seeking to contribute to efficient financial operations and continue growing professionally as a B.Com student.
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Work Experience</h2>
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <h3 class="job-title">Accountant</h3>
+                                <p class="company">KD Book Centre</p>
+                            </div>
+                            <div class="duration">Oct 2023 - Present</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Managed day-to-day accounting tasks including billing, cash handling, and sales entry</li>
+                                <li>Maintained vendor records and updated stock books with precision</li>
+                                <li>Organized and handled accounts receivable/payable efficiently</li>
+                                <li>Utilized Tally Prime and MS Excel for ledger maintenance and data entry</li>
+                                <li>Coordinated with suppliers and maintained accurate purchase records</li>
+                                <li>Supported month-end closing and preparation of basic financial reports</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Education</h2>
+                    <div class="education-item">
+                        <div class="education-header">
+                            <div>
+                                <h3 class="degree">Bachelor of Commerce (B.Com)</h3>
+                                <p class="institution">Amity University, Noida</p>
+                            </div>
+                            <div class="duration">2024 - 2027</div>
+                        </div>
+                        <p><strong>Status:</strong> Currently Pursuing | <strong>CGPA:</strong> Pending</p>
+                    </div>
+                    
+                    <div class="education-item">
+                        <div class="education-header">
+                            <div>
+                                <h3 class="degree">Intermediate (12th Grade)</h3>
+                                <p class="institution">N.C.R. Inter College, U.P</p>
+                            </div>
+                            <div class="duration">2021 - 2022</div>
+                        </div>
+                        <p><strong>Board:</strong> C.B.S.E | <strong>Result:</strong> Second Division</p>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="education-header">
+                            <div>
+                                <h3 class="degree">High School (10th Grade)</h3>
+                                <p class="institution">N.C.R. Inter College, U.P</p>
+                            </div>
+                            <div class="duration">2019-2020</div>
+                        </div>
+                        <p><strong>Board:</strong> C.B.S.E | <strong>Result:</strong> Second Division</p>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Certifications & Achievements</h2>
+                    <div class="achievements-grid">
+                        <div class="achievement-item">
+                            <div class="achievement-icon">📊</div>
+                            <div class="achievement-text">Advanced Excel<br><small>Amity University</small></div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">👑</div>
+                            <div class="achievement-text">Leadership<br><small>Amity University</small></div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">🎯</div>
+                            <div class="achievement-text">Life Skills<br><small>Amity University</small></div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">🔢</div>
+                            <div class="achievement-text">Basic Mathematics<br><small>Amity University</small></div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
